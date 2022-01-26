@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            .DEBUG
+            {
+                font-family: 'Courier New', monospace;
+                color: white;
+                padding: 0%;
+                line-height: 45%;
+                background-color: black;
+            }
+
+            .DEBUG_P
+            {
+                padding: 0%;
+            }
+
+            html
+            {
+                background-color: black
+            }
+
+            body
+            {
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='debugDiv' class='debug'></div>
+    </body>
+    <script>
+        if (typeof console  != "undefined") 
+            if (typeof console.log != 'undefined')
+                console.olog = console.log;
+            else
+                console.olog = function() {};
+
+        console.log = function(message) {
+            console.olog(message);
+            let div = document.getElementById('debugDiv');
+            div.innerHTML = ('<p class="DEBUG_P">' + message + '</p>') + div.innerHTML;
+        };
+        console.error = console.debug = console.info =  console.log
+    </script>
+    <script src="a.out.js"></script>
+</html>
